@@ -5,9 +5,9 @@ body {
 #dotGray {
     top: 50%;
     left: 50%;
-    width: 15vh;
-    height: 8.25vh;
-    font: 8vh Helvetica;
+    width: 15vmin;
+    height: 8.25vmin;
+    font: 7vmin Helvetica;
     text-align: center;
     position: absolute;
     border-radius: 5px;
