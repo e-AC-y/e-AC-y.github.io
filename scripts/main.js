@@ -20,7 +20,7 @@ const newspaperSpinning = [
 ];
 
 const newspaperTiming = {
-    duration: interval + 500,
+    duration: interval * 1.25,
     iterations: 1,
 }
 
