@@ -6,10 +6,32 @@
 </head>
 
 <body>
-    
-    <div id = "container" style="display: flex; justify-content: center; align-items: center; ">
-        <div id = "score">Score 0</div>
-        <div id = "dotGray">START</div>
+
+    <div id="container" style="display: flex; justify-content: center; align-items: center; ">
+        <div id="score">Score 0</div>
+        <div id="dotGray">START</div>
+        <select calss="custom" id="music">
+            <option disabled>Music</option>
+            <option value="1">Always with me</option>
+            <option value="2">I will remember you</option>
+            <option value="3">Nocturne</option>
+        </select>
+        <select calss="custom" id="playbackSpeed">
+            <option disabled>Speed</option>
+            <option value="0.5">0.5</option>
+            <option value="0.6">0.6</option>
+            <option value="0.75">0.75</option>
+            <option value="0.8">0.8</option>
+            <option value="1" selected>1</option>
+        </select>
+        <select calss="custom" id="note">
+            <option disabled>Note</option>
+            <option value="1/4">Whole</option>
+            <option value="1/2">Half</option>
+            <option value="1" selected>Quarter</option>
+            <option value="2">Eighth</option>
+            <option value="4">Sixteenth</option>
+        </select>
     </div>
     <audio preload="auto" id="bgm">
         <source src="./media/1130IWillRememberYouEdSheeran146.mp3" type="audio/mpeg">
