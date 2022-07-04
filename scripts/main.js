@@ -1,4 +1,4 @@
-startTime = 11 / 30; bpm = 146 / 2; playbackSpeed = 1;
+startTime = 11 / 30; bpm = 146 / 4; playbackSpeed = 1;
 interval = 60000 / bpm / playbackSpeed;
 bgm = document.getElementById("bgm");
 dot = document.getElementById("dotGray");
