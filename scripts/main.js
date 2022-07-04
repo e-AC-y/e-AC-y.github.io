@@ -15,18 +15,17 @@ bgm.play();
 const intervalID = setInterval(getRandomXY, interval);
 
 const newspaperSpinning = [
-  { transform: ' scale(1)' },
-  { transform: ' scale(0)' }
+    { transform: ' scale(1)' },
+    { transform: ' scale(0)' }
 ];
 
 const newspaperTiming = {
-  duration: interval + 500,
-  iterations: 1,
+    duration: interval + 500,
+    iterations: 1,
 }
 
 function getRandomXY() {
     dot.innerHTML = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-
     dot.style.top = (15 + Math.random() * 70) + "vh";
     dot.style.left = (15 + Math.random() * 70) + "vw";
     dot.animate(newspaperSpinning, newspaperTiming);
@@ -36,15 +35,15 @@ function getRandomXY() {
 let count = 0;
 
 document.addEventListener("keydown", (event) => {
-    if (event.key == dot.innerHTML.toLowerCase()){
+    if (event.key == dot.innerHTML.toLowerCase()) {
         dot.style.backgroundColor = "Aquamarine";
         count++;
-        score.innerHTML = "Score: "+count;
+        score.innerHTML = "Score    " + count;
     }
-    else{
+    else {
         dot.style.backgroundColor = "Coral";
         count--;
-        score.innerHTML = "Score: "+count;
+        score.innerHTML = "Score    " + count;
 
     }
 })
