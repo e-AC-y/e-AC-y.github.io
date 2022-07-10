@@ -5,6 +5,7 @@ import { bgm1_data, bgm2_data, bgm3_data } from './BGM.js';
 const bgm = document.getElementById("bgm");
 const dot = document.getElementById("dotGray");
 const score = document.getElementById("score");
+const button = document.getElementById("start");
 
 
 function getRandomXY() {
@@ -55,7 +56,7 @@ let get_score = true;
 const Initialize = (music) => {
     bgm.pause();
     if(music == 1){
-        bgm.src = "./media/" +bgm1_data.title;
+        bgm.src = "./media/" + bgm1_data.title;
         startTime = bgm1_data.startTime;
         bpm = bgm1_data.bpm;
     }
@@ -86,4 +87,4 @@ function Gameplay(){
     const intervalID = setInterval(getRandomXY, interval);
 }
 
-dot.addEventListener("click", Gameplay());
+button.addEventListener("click", Gameplay);
