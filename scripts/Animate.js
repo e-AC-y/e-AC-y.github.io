@@ -4,7 +4,7 @@ const Scaling = [
 ];
 
 const ScaleTiming = {
-    duration: 20000 * 1.25,
+    duration: 2000 * 1.25,
     iterations: 1,
 }
 
