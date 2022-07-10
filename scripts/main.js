@@ -74,17 +74,22 @@ const Initialize = (music) => {
     bgm.playbackRate = playbackSpeed;
     bgm.play();
 }
-
+ 
+let intervalID = 0;
 
 function Gameplay(){
-
+    if( intervalID !=0 )
+        clearInterval(intervalID);
+    
     playbackSpeed = document.getElementById("playbackSpeed").value;
     note = document.getElementById("note").value;
     music = document.getElementById("music").value;
     Initialize(music);
 
     let interval = 60000 / bpm / playbackSpeed / note;
-    const intervalID = setInterval(getRandomXY, interval);
+    ScaleTiming.duration = interval * 1.5;
+    intervalID = setInterval(getRandomXY, interval);
 }
+
 
 button.addEventListener("click", Gameplay);
