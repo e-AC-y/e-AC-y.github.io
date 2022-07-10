@@ -1,48 +1,89 @@
-import { ScaleTiming, Scaling } from './Animate.js';
+import { ScaleTiming, Scaling, DisappearTiming, Disappearing } from './Animate.js';
+import { bgm1_data, bgm2_data, bgm3_data } from './BGM.js';
 
-const startTime = 11 / 30;
-const bpm = 146 / 4;
-const playbackSpeed = 1;
-
-const interval = 60000 / bpm / playbackSpeed;
 
 const bgm = document.getElementById("bgm");
 const dot = document.getElementById("dotGray");
 const score = document.getElementById("score");
 
-bgm.currentTime = startTime;
-bgm.playbackRate = playbackSpeed;
-bgm.play();
-
-const intervalID = setInterval(getRandomXY, interval);
 
 function getRandomXY() {
-    get_score = false;
+    get_score = true;
     dot.innerHTML = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+    dot.style.display = "block";
     dot.style.top = (15 + Math.random() * 70) + "vh";
     dot.style.left = (15 + Math.random() * 70) + "vw";
     dot.animate(Scaling, ScaleTiming);
     dot.style.backgroundColor = "Azure";
 }
 
-let count = 0;
-let get_score = false;
 
 document.addEventListener("keydown", (event) => {
     if (event.key == dot.innerHTML.toLowerCase()) {
-        dot.style.backgroundColor = "Aquamarine";
-        if(!get_score){
+        if(get_score){
+            dot.style.backgroundColor = "Aquamarine";
             count++;
             score.innerHTML = "Score    " + count;
-            get_score = true;
+            get_score = false;
+            dot.animate(Disappearing, DisappearTiming);
+            dot.addEventListener("animationend", function() {
+		        dot.style.display = "none";
+            });
         }
     }
     else {
-        dot.style.backgroundColor = "Coral";
-        if(!get_score){
+        if(get_score){
+            dot.style.backgroundColor = "Coral";
             count--;
             score.innerHTML = "Score    " + count;
-            get_score = true;
+            get_score = false;
+            dot.animate(Disappearing, DisappearTiming);
+            dot.addEventListener("animationend", function() {
+		        dot.style.display = "none";
+            });
         }
     }
 })
+
+let startTime = 11 / 30;
+let bpm = 146 / 4;
+let playbackSpeed = 1;
+
+let count = 0;
+let get_score = true;
+
+const Initialize = (music) => {
+    bgm.pause();
+    if(music == 1){
+        bgm.src = "./media/" +bgm1_data.title;
+        startTime = bgm1_data.startTime;
+        bpm = bgm1_data.bpm;
+    }
+    else if(music == 2){
+        bgm.src = "./media/" +bgm2_data.title;
+        startTime = bgm2_data.startTime;
+        bpm = bgm2_data.bpm;
+    }
+    else{
+        bgm.src = "./media/" +bgm3_data.title;
+        startTime = bgm3_data.startTime;
+        bpm = bgm3_data.bpm;
+    }
+    bgm.currentTime = startTime;
+    bgm.playbackRate = playbackSpeed;
+    bgm.play();
+}
+
+
+function Gameplay(){
+
+    playbackSpeed = document.getElementById("playbackSpeed").value;
+    note = document.getElementById("note").value;
+    music = document.getElementById("music").value;
+    Initialize(music);
+
+    let interval = 60000 / bpm / playbackSpeed / note;
+    const intervalID = setInterval(getRandomXY, interval);
+}
+
+dot.addEventListener("click", Gameplay());
