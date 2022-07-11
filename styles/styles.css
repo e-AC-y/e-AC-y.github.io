@@ -3,6 +3,9 @@ body {
     background-image: url("../imgs/bg01.png");
 }
 
+button:hover {
+    background-color: rgb(50, 50, 50);
+}
 
 #dotGray {
     top: 45vh;
