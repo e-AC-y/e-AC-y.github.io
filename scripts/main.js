@@ -20,6 +20,8 @@ function getRandomXY() {
 
 
 document.addEventListener("keydown", (event) => {
+    if(event.key.charCodeAt(0)<97 || event.key.charCodeAt(0) > 122 || intervalID == 0)
+        return;
     if (event.key == dot.innerHTML.toLowerCase()) {
         if(get_score){
             dot.style.backgroundColor = "Aquamarine";
